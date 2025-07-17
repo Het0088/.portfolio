@@ -1,3 +1,17 @@
+// Timeline Animation
+function animateTimeline() {
+  const items = document.querySelectorAll('.timeline-item');
+  const trigger = window.innerHeight * 0.85;
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < trigger) {
+      item.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', animateTimeline);
+window.addEventListener('DOMContentLoaded', animateTimeline);
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
