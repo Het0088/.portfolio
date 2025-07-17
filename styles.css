@@ -635,6 +635,14 @@ section {
 }
 
 @media (max-width: 480px) {
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
     .hero-title {
         font-size: 1.5rem;
         white-space: normal;
