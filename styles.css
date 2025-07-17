@@ -636,18 +636,35 @@ section {
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 2rem;
-        white-space: nowrap; /* Keep name on single line */
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
+        font-size: 1.5rem;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        height: auto;
+        min-height: unset;
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
     }
-
+    .hero-content {
+        min-height: unset;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .hero-subtitle, .hero-description {
+        text-align: center;
+        height: auto;
+        min-height: unset;
+    }
     .section-title {
-        font-size: 2rem;
+        font-size: 1.3rem;
     }
-
     .container {
-        padding: 0 15px;
+        padding: 0 10px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
     }
 }
