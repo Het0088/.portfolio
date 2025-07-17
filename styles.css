@@ -59,8 +59,8 @@
   padding: 0 50px;
   box-sizing: border-box;
   min-height: 140px;
-  opacity: 0;
-  transform: translateY(50px) scale(0.8);
+  opacity: 1; /* Make timeline visible by default */
+  transform: translateY(0) scale(1); /* No transformation by default */
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   margin-bottom: 40px;
 }
@@ -90,11 +90,11 @@
 }
 
 .timeline-item.left .timeline-dot {
-  right: 7px;
+  right: -35px; /* Position closer to center line */
 }
 
 .timeline-item.right .timeline-dot {
-  left: 7px;
+  left: -35px; /* Position closer to center line */
 }
 
 .timeline-dot:hover {
@@ -179,6 +179,11 @@
   color: #4b5563;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.timeline-item.animate-timeline {
+  opacity: 1; /* Always visible */
+  transform: translateY(0) scale(1); /* No transformation by default */
 }
 
 .timeline-item.visible {
@@ -523,7 +528,7 @@ section {
 
 /* About Section */
 .about {
-    background: #000000;
+    background: #e3dae6;
 }
 
 .about-content {

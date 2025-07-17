@@ -10,8 +10,23 @@ function animateTimeline() {
   });
 }
 
+// Make sure timeline is properly initialized
+function initTimeline() {
+  // Add visible class to all timeline items immediately
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    item.classList.add('visible');
+  });
+  
+  // Then still run the normal animation for scroll effects
+  animateTimeline();
+  
+  // Force visibility of timeline items that should be visible on page load
+  setTimeout(animateTimeline, 500); // Run again after a short delay
+}
+
 window.addEventListener('scroll', animateTimeline);
-window.addEventListener('DOMContentLoaded', animateTimeline);
+window.addEventListener('load', initTimeline); // Using load instead of DOMContentLoaded
+document.addEventListener('DOMContentLoaded', initTimeline); // Also use DOMContentLoaded as a fallback
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
