@@ -5,12 +5,26 @@ class PortfolioApp {
     }
 
     init() {
+        this.ensureTopPosition();
         this.setupEventListeners();
         this.initializeTheme();
         this.initializeAnimations();
         this.initializeNavigation();
         this.initializeFormHandling();
         this.showLoadingScreen();
+    }
+
+    // Ensure page starts at top on load/refresh
+    ensureTopPosition() {
+        // Immediately scroll to top without animation
+        if (window.scrollY !== 0) {
+            window.scrollTo(0, 0);
+        }
+        
+        // Also ensure on page load
+        window.addEventListener('beforeunload', () => {
+            window.scrollTo(0, 0);
+        });
     }
 
     // Loading screen management
@@ -272,7 +286,11 @@ class PortfolioApp {
                     const suffix = target.textContent.replace(/[0-9]/g, '');
                     
                     let current = 0;
-                    const increment = targetValue / 50;
+                    const duration = 2500; // 2.5 seconds total animation time
+                    const steps = 100; // More steps for smoother animation
+                    const increment = targetValue / steps;
+                    const stepTime = duration / steps; // ~25ms per step
+                    
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= targetValue) {
@@ -280,7 +298,7 @@ class PortfolioApp {
                             clearInterval(timer);
                         }
                         target.textContent = Math.floor(current) + suffix;
-                    }, 30);
+                    }, stepTime);
                     
                     // Stop observing this element
                     this.statsObserver.unobserve(target);
@@ -743,7 +761,14 @@ class PortfolioApp {
 
 // Initialize the portfolio application
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure we start at the top
+    window.scrollTo(0, 0);
     new PortfolioApp();
+});
+
+// Also ensure on window load
+window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
 });
 
 // Additional utility functions
