@@ -127,7 +127,7 @@ body.dark-mode {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-color);
@@ -137,7 +137,7 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-    background: rgba(17, 24, 39, 0.85);
+    background: rgba(17, 24, 39, 0.95);
 }
 
 .nav-container {
@@ -148,11 +148,13 @@ body.dark-mode .navbar {
     justify-content: space-between;
     align-items: center;
     height: var(--navbar-height);
+    position: relative;
 }
 
 /* Enhanced Logo */
 .nav-brand {
     flex-shrink: 0;
+    z-index: 1001;
 }
 
 .nav-logo a {
@@ -269,6 +271,7 @@ body.dark-mode .navbar {
     transition: var(--transition);
     background: none;
     border: none;
+    z-index: 1002;
 }
 
 .hamburger:hover {
