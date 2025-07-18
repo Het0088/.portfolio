@@ -1286,10 +1286,13 @@ section {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 3rem;
+        padding-top: 2rem;
     }
 
     .hero-stats {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
     }
     
     .contact-content {
@@ -1348,11 +1351,32 @@ section {
     .nav-link span {
         display: none;
     }
+
+    /* Fix hero stats overlap */
+    .stat-item {
+        min-width: 120px;
+        flex-shrink: 0;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
     :root {
         --navbar-height: 70px;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+        height: var(--navbar-height);
     }
 
     .nav-menu {
@@ -1367,6 +1391,7 @@ section {
         box-shadow: 0 10px 30px var(--shadow-medium);
         padding: 2rem 0;
         border-top: 1px solid var(--border-color);
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -1376,6 +1401,8 @@ section {
     .nav-link {
         justify-content: center;
         margin: 0 1rem;
+        padding: 1rem;
+        font-size: 1rem;
     }
 
     .nav-link span {
@@ -1384,23 +1411,59 @@ section {
 
     .hamburger {
         display: flex;
+        padding: 0.75rem;
     }
 
     .hero {
-        padding: var(--navbar-height) 0 3rem 0;
-        min-height: 90vh;
+        padding: calc(var(--navbar-height) + 1rem) 0 3rem 0;
+        min-height: 100vh;
+    }
+
+    .hero-container {
+        padding: 1rem;
+        gap: 2rem;
     }
 
     .hero-buttons {
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
 
     .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
+        margin: 2rem 0;
+        justify-items: center;
+    }
+
+    .stat-item {
+        text-align: center;
+        min-width: 100px;
     }
 
     .stat-number {
         font-size: 1.5rem;
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        line-height: 1.2;
+    }
+
+    .hero-credentials {
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+    }
+
+    .credential {
+        font-size: 0.9rem;
+        justify-content: center;
+        text-align: center;
     }
 
     .about-stats {
@@ -1422,12 +1485,38 @@ section {
         padding: 3rem 0;
     }
 
-    .timeline-item {
-        padding-left: 3rem;
+    .timeline {
+        padding: 0 1rem;
     }
 
-    .credential {
+    .timeline::before {
+        left: 1.5rem;
+    }
+
+    .timeline-item {
+        padding-left: 3.5rem;
+        padding-right: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-dot {
+        left: 1rem !important;
+        width: 16px;
+        height: 16px;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .timeline-content p {
         font-size: 0.9rem;
+        line-height: 1.5;
     }
 
     .profile-placeholder {
@@ -1435,43 +1524,112 @@ section {
         height: 220px;
         font-size: 3rem;
     }
+
+    .logo-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 1rem;
+        padding: 0 0.75rem;
+    }
+
+    .nav-container {
+        padding: 0 0.75rem;
+    }
+
+    .hero {
+        padding: calc(var(--navbar-height) + 0.5rem) 0 2rem 0;
+    }
+
+    .hero-container {
+        padding: 0.75rem;
+        gap: 1.5rem;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
+        margin-bottom: 1.5rem;
     }
 
     .title-greeting {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .title-highlight {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .section-title {
         font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
     }
 
     .btn {
         width: 100%;
         max-width: 280px;
         justify-content: center;
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
     }
 
     .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+        padding: 0 0.5rem;
+    }
+
+    .stat-item {
+        min-width: 80px;
+        padding: 0.5rem 0.25rem;
+    }
+
+    .stat-number {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+        line-height: 1.1;
+    }
+
+    .hero-credentials {
+        gap: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    .credential {
+        font-size: 0.85rem;
+        gap: 0.5rem;
+    }
+
+    .credential i {
+        width: 16px;
+        font-size: 0.9rem;
     }
 
     .profile-placeholder {
@@ -1482,14 +1640,24 @@ section {
 
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .project-card {
-        margin: 0 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .project-content {
+        padding: 1.5rem;
+        min-height: 250px;
     }
 
     .contact-form {
         padding: 1.5rem;
+    }
+
+    .contact-content {
+        gap: 2rem;
     }
 
     .logo-icon {
@@ -1498,8 +1666,78 @@ section {
         font-size: 1.2rem;
     }
 
-    .hero-credentials {
-        gap: 0.5rem;
+    /* Timeline mobile adjustments */
+    .timeline {
+        padding: 0 0.75rem;
+    }
+
+    .timeline::before {
+        left: 1rem;
+        width: 3px;
+    }
+
+    .timeline-item {
+        padding-left: 2.5rem;
+        padding-right: 0.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .timeline-dot {
+        left: 0.65rem !important;
+        width: 14px;
+        height: 14px;
+    }
+
+    .timeline-content {
+        padding: 1.25rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    /* Section spacing adjustments */
+    section {
+        padding: 2.5rem 0;
+    }
+
+    .about-stats {
+        gap: 1rem;
+    }
+
+    .stat {
+        padding: 1.5rem;
+    }
+
+    .skills-grid {
+        gap: 1rem;
+    }
+
+    .skill-card {
+        padding: 1.5rem;
+    }
+
+    /* Form improvements */
+    .form-group input,
+    .form-group textarea {
+        padding: 0.875rem;
+        font-size: 0.9rem;
+    }
+
+    .social-links {
+        gap: 0.75rem;
+    }
+
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
     }
 }
 
