@@ -1345,7 +1345,16 @@ section {
     }
 
     .logo-text {
+        display: flex;
+    }
+
+    .logo-title {
         display: none;
+    }
+
+    .logo-name {
+        font-size: 1rem;
+        font-weight: 600;
     }
 
     .nav-link span {
@@ -1377,6 +1386,16 @@ section {
     .nav-container {
         padding: 0 1rem;
         height: var(--navbar-height);
+        justify-content: space-between;
+    }
+
+    .nav-brand {
+        flex-shrink: 0;
+        max-width: 70%;
+    }
+
+    .nav-logo a {
+        gap: 0.75rem;
     }
 
     .nav-menu {
@@ -1530,6 +1549,20 @@ section {
         height: 45px;
         font-size: 1.3rem;
     }
+
+    .logo-text {
+        display: flex;
+    }
+
+    .logo-name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .logo-title {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1539,6 +1572,16 @@ section {
 
     .nav-container {
         padding: 0 0.75rem;
+        justify-content: space-between;
+    }
+
+    .nav-brand {
+        flex-shrink: 0;
+        max-width: 65%;
+    }
+
+    .nav-logo a {
+        gap: 0.5rem;
     }
 
     .hero {
@@ -1664,6 +1707,21 @@ section {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
+    }
+
+    .logo-text {
+        display: flex;
+    }
+
+    .logo-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .logo-title {
+        display: none;
     }
 
     /* Timeline mobile adjustments */
